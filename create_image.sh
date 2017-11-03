@@ -11,13 +11,18 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Dev tools
-sudo yum install -y java-1.7.0-openjdk-devel gcc gcc-c++ ant git
+#sudo yum install -y java-1.7.0-openjdk-devel gcc gcc-c++ ant git
+sudo yum install -y gcc gcc-c++ ant git
+sudo yum install -y java-1.8.0 java-1.8.0-devel
+sudo /usr/sbin/alternatives --set java /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
+sudo /usr/sbin/alternatives --set javac /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/javac
+
 # Perf tools
 sudo yum install -y dstat iotop strace sysstat htop perf
 sudo debuginfo-install -q -y glibc
 sudo debuginfo-install -q -y kernel
-sudo yum --enablerepo='*-debug*' install -q -y java-1.7.0-openjdk-debuginfo.x86_64
-
+#sudo yum --enablerepo='*-debug*' install -q -y java-1.7.0-openjdk-debuginfo.x86_64
+sudo yum --enablerepo='*-debug*' install -y java-1.8.0-openjdk-debuginfo
 # PySpark and MLlib deps
 sudo yum install -y  python-matplotlib python-tornado scipy libgfortran
 # SparkR deps
@@ -54,7 +59,8 @@ mv apache-maven-3.2.3 /opt/
 
 # Edit bash profile
 echo "export PS1=\"\\u@\\h \\W]\\$ \"" >> ~/.bash_profile
-echo "export JAVA_HOME=/usr/lib/jvm/java-1.7.0" >> ~/.bash_profile
+#echo "export JAVA_HOME=/usr/lib/jvm/java-1.7.0" >> ~/.bash_profile
+echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0" >> ~/.bash_profile
 echo "export M2_HOME=/opt/apache-maven-3.2.3" >> ~/.bash_profile
 echo "export PATH=\$PATH:\$M2_HOME/bin" >> ~/.bash_profile
 
@@ -64,11 +70,11 @@ source ~/.bash_profile
 sudo mkdir /root/hadoop-native
 cd /tmp
 sudo yum install -y protobuf-compiler cmake openssl-devel
-wget "http://archive.apache.org/dist/hadoop/common/hadoop-2.4.1/hadoop-2.4.1-src.tar.gz"
-tar xvzf hadoop-2.4.1-src.tar.gz
-cd hadoop-2.4.1-src
+wget "http://archive.apache.org/dist/hadoop/common/hadoop-2.7.0/hadoop-2.7.0-src.tar.gz"
+tar xvzf hadoop-2.7.0-src.tar.gz
+cd hadoop-2.7.0-src
 mvn package -Pdist,native -DskipTests -Dtar
-sudo mv hadoop-dist/target/hadoop-2.4.1/lib/native/* /root/hadoop-native
+sudo mv hadoop-dist/target/hadoop-2.7.0/lib/native/* /root/hadoop-native
 
 # Install Snappy lib (for Hadoop)
 yum install -y snappy

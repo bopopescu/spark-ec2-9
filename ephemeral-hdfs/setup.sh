@@ -27,7 +27,6 @@ else
 fi
 
 echo "Starting ephemeral HDFS..."
-
 # This is different depending on version.
 case "$HADOOP_MAJOR_VERSION" in
   1)
@@ -42,8 +41,8 @@ case "$HADOOP_MAJOR_VERSION" in
     $EPHEMERAL_HDFS/sbin/start-yarn.sh
     ;;
   *)
-     echo "ERROR: Unknown Hadoop version"
-     return -1
+    echo "ERROR: Unknown Hadoop version"
+    return -1
 esac
 
 popd > /dev/null

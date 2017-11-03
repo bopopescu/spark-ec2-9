@@ -84,7 +84,8 @@ VALID_SPARK_VERSIONS = set([
     "2.0.1",
     "2.0.2",
     "2.1.0",
-    "2.1.1"
+    "2.1.1",
+    "2.2.0"
 ])
 
 SPARK_TACHYON_MAP = {
@@ -104,6 +105,7 @@ SPARK_TACHYON_MAP = {
     "1.5.2": "0.7.1",
     "1.6.0": "0.8.2",
     "2.0.0-preview": "",
+    "2.2.0":"1.6.0"
 }
 
 DEFAULT_SPARK_VERSION = SPARK_EC2_VERSION
@@ -393,6 +395,7 @@ def get_validate_spark_version(version, repo):
     if "." in version:
         # Remove leading v to handle inputs like v1.5.0
         version = version.lstrip("v")
+        print('requested spark version is', version)
         if version not in VALID_SPARK_VERSIONS:
             print("Don't know about Spark version: {v}".format(v=version), file=stderr)
             sys.exit(1)

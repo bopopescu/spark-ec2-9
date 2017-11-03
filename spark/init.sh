@@ -124,13 +124,17 @@ else
         wget http://s3.amazonaws.com/spark-related-packages/spark-1.2.1-bin-hadoop2.4.tgz
       fi
       ;;
+    2.2.0)
+        echo "Trying to install hadoop 2.7"
+        wget http://s3.amazonaws.com/spark-related-packages/spark-2.2.0-bin-hadoop2.7.tgz
+ +      ;;
     *)
       if [[ "$HADOOP_MAJOR_VERSION" == "1" ]]; then
         wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-hadoop1.tgz
       elif [[ "$HADOOP_MAJOR_VERSION" == "2" ]]; then
         wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-cdh4.tgz
       else
-        wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-hadoop2.4.tgz
+        wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-hadoop2.7.tgz
       fi
       if [ $? != 0 ]; then
         echo "ERROR: Unknown Spark version"
