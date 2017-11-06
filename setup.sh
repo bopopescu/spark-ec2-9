@@ -2,6 +2,14 @@
 
 sudo yum install -y -q pssh
 
+sudo yum install -y gcc gcc-c++ ant git
+sudo yum install -y java-1.8.0 java-1.8.0-devel
+
+sudo /usr/sbin/alternatives --set java /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
+echo "updated java version"
+sudo /usr/sbin/alternatives --set javac /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/javac
+echo "updated javac version"
+
 # usage: echo_time_diff name start_time end_time
 echo_time_diff () {
   local format='%Hh %Mm %Ss'
@@ -18,6 +26,7 @@ source /root/.bash_profile
 
 # Load the cluster variables set by the deploy script
 source ec2-variables.sh
+
 
 # Set hostname based on EC2 private DNS name, so that it is set correctly
 # even if the instance is restarted with a different private DNS name
