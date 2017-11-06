@@ -66,7 +66,7 @@ else
   esac
 
   echo "Unpacking Tachyon or Alluxio"
-  if [["$HADOOP_MAJOR_VERSION" == "7"]]; then
+  if [["$TACHYON_VERSION" == "1.6.0"]]; then
     tar xvzf alluxio-*.tar.gz > /tmp/spark-ec2_alluxio.log
     rm alluxio-*.tar.gz
     mv `ls -d alluxio-*` alluxio
@@ -74,6 +74,7 @@ else
     tar xvzf tachyon-*.tar.gz > /tmp/spark-ec2_tachyon.log
     rm tachyon-*.tar.gz
     mv `ls -d tachyon-*` tachyon
+  fi
 fi
 
 popd > /dev/null
