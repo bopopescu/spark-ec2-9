@@ -14,15 +14,18 @@ fi
 #sudo yum install -y java-1.7.0-openjdk-devel gcc gcc-c++ ant git
 sudo yum install -y gcc gcc-c++ ant git
 sudo yum install -y java-1.8.0 java-1.8.0-devel
+
 sudo /usr/sbin/alternatives --set java /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
+echo "updated java version"
 sudo /usr/sbin/alternatives --set javac /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/javac
+echo "updated javac version"
 
 # Perf tools
 sudo yum install -y dstat iotop strace sysstat htop perf
 sudo debuginfo-install -q -y glibc
 sudo debuginfo-install -q -y kernel
 #sudo yum --enablerepo='*-debug*' install -q -y java-1.7.0-openjdk-debuginfo.x86_64
-sudo yum --enablerepo='*-debug*' install -y java-1.8.0-openjdk-debuginfo
+
 # PySpark and MLlib deps
 sudo yum install -y  python-matplotlib python-tornado scipy libgfortran
 # SparkR deps
