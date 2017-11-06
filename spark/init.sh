@@ -127,7 +127,7 @@ else
     2.2.0)
         echo "Trying to install hadoop 2.7"
         wget http://s3.amazonaws.com/spark-related-packages/spark-2.2.0-bin-hadoop2.7.tgz
- +      ;;
+        ;;
     *)
       if [[ "$HADOOP_MAJOR_VERSION" == "1" ]]; then
         wget http://s3.amazonaws.com/spark-related-packages/spark-$SPARK_VERSION-bin-hadoop1.tgz
