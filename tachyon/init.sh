@@ -66,7 +66,7 @@ else
   esac
 
   echo "Unpacking Tachyon or Alluxio"
-  if [$TACHYON_VERSION == "1.6.0"]; then
+  if [[$TACHYON_VERSION == "1.6.0"]]; then
     tar xvzf alluxio-*.tar.gz > /tmp/spark-ec2_alluxio.log
     rm alluxio-*.tar.gz
     mv `ls -d alluxio-*` alluxio
