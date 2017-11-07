@@ -55,10 +55,10 @@ for x in {1..23}; do
 done
 
 # Install Maven (for Hadoop)
-cd /tmp
-wget "http://archive.apache.org/dist/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz"
-tar xvzf apache-maven-3.2.3-bin.tar.gz
-mv apache-maven-3.2.3 /opt/
+#cd /tmp
+#wget "http://archive.apache.org/dist/maven/maven-3/3.2.3/binaries/apache-maven-3.2.3-bin.tar.gz"
+#tar xvzf apache-maven-3.2.3-bin.tar.gz
+#mv apache-maven-3.2.3 /opt/
 
 # Edit bash profile
 echo "export PS1=\"\\u@\\h \\W]\\$ \"" >> ~/.bash_profile
@@ -70,22 +70,22 @@ echo "export PATH=\$PATH:\$M2_HOME/bin" >> ~/.bash_profile
 source ~/.bash_profile
 
 # Build Hadoop to install native libs
-sudo mkdir /root/hadoop-native
-cd /tmp
-sudo yum install -y protobuf-compiler cmake openssl-devel
-wget "http://archive.apache.org/dist/hadoop/common/hadoop-2.7.0/hadoop-2.7.0-src.tar.gz"
-tar xvzf hadoop-2.7.0-src.tar.gz
-cd hadoop-2.7.0-src
-mvn package -Pdist,native -DskipTests -Dtar
-sudo mv hadoop-dist/target/hadoop-2.7.0/lib/native/* /root/hadoop-native
+# sudo mkdir /root/hadoop-native
+# cd /tmp
+# sudo yum install -y protobuf-compiler cmake openssl-devel
+# wget "http://archive.apache.org/dist/hadoop/common/hadoop-2.7.0/hadoop-2.7.0-src.tar.gz"
+# tar xvzf hadoop-2.7.0-src.tar.gz
+# cd hadoop-2.7.0-src
+# mvn package -Pdist,native -DskipTests -Dtar
+# sudo mv hadoop-dist/target/hadoop-2.7.0/lib/native/* /root/hadoop-native
 
 # Install Snappy lib (for Hadoop)
-yum install -y snappy
-ln -sf /usr/lib64/libsnappy.so.1 /root/hadoop-native/.
+# yum install -y snappy
+# ln -sf /usr/lib64/libsnappy.so.1 /root/hadoop-native/.
 
 # Create /usr/bin/realpath which is used by R to find Java installations
 # NOTE: /usr/bin/realpath is missing in CentOS AMIs. See
 # http://superuser.com/questions/771104/usr-bin-realpath-not-found-in-centos-6-5
-echo '#!/bin/bash' > /usr/bin/realpath
-echo 'readlink -e "$@"' >> /usr/bin/realpath
-chmod a+x /usr/bin/realpath
+# echo '#!/bin/bash' > /usr/bin/realpath
+# echo 'readlink -e "$@"' >> /usr/bin/realpath
+# chmod a+x /usr/bin/realpath
