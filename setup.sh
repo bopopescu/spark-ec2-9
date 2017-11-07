@@ -15,8 +15,8 @@ pushd /root/spark-ec2 > /dev/null
 
 #running create image.sh
 
-echo "running create image"
-sudo source create_image.sh
+echo "running create image for master"
+source create_image.sh
 echo "end of create image"
 
 # Load the environment variables specific to this AMI

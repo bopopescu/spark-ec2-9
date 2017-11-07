@@ -10,8 +10,8 @@ fi
 # Make sure we are in the spark-ec2 directory
 pushd /root/spark-ec2 > /dev/null
 
-echo "running create image"
-sudo source create_image.sh
+echo "running create image for slave"
+source create_image.sh
 echo "end of create image"
 
 source ec2-variables.sh
