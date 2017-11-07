@@ -20,9 +20,10 @@ source create_image.sh
 echo "end of create image"
 
 # Load the environment variables specific to this AMI
-#source /root/.bash_profile commented on 2017-11-07 since this line already exists in create_image.sh
+source /root/.bash_profile
 
 # Load the cluster variables set by the deploy script
+
 source ec2-variables.sh
 
 # Set hostname based on EC2 private DNS name, so that it is set correctly
