@@ -2,12 +2,12 @@
 
 sudo yum install -y -q pssh
 
-sudo yum install -y gcc gcc-c++ ant git
+#sudo yum install -y gcc gcc-c++ ant git
 sudo yum install -y java-1.8.0 java-1.8.0-devel
 
 sudo /usr/sbin/alternatives --set java /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
 echo "updated java version"
-sudo /usr/sbin/alternatives --set javac /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/javac
+sudo /usr/sbin/alternatives --set javac /usr/lib/jvm/java-1.8.0-openjdk.x86_64/bin/javac
 echo "updated javac version"
 
 # usage: echo_time_diff name start_time end_time
