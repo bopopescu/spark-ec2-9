@@ -1,7 +1,13 @@
 #!/bin/bash
 
 sudo yum install -y -q pssh
+sudo yum install -y java-1.8.0 java-1.8.0-devel
 
+sudo /usr/sbin/alternatives --set java /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
+echo "updated java version"
+sudo /usr/sbin/alternatives --set javac /usr/lib/jvm/java-1.8.0-openjdk.x86_64/bin/javac
+echo "updated javac version"
+echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0" >> ~/.bash_profile
 # usage: echo_time_diff name start_time end_time
 echo_time_diff () {
   local format='%Hh %Mm %Ss'
@@ -14,10 +20,6 @@ echo_time_diff () {
 pushd /root/spark-ec2 > /dev/null
 
 #running create image.sh
-
-echo "running create image for master"
-source create_image.sh
-echo "end of create image"
 
 # Load the environment variables specific to this AMI
 source /root/.bash_profile

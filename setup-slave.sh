@@ -7,6 +7,12 @@ if [[ -e /sys/kernel/mm/transparent_hugepage/enabled ]]; then
   echo never > /sys/kernel/mm/transparent_hugepage/enabled
 fi
 
+sudo /usr/sbin/alternatives --set java /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java
+echo "updated java version"
+sudo /usr/sbin/alternatives --set javac /usr/lib/jvm/java-1.8.0-openjdk.x86_64/bin/javac
+echo "updated javac version"
+echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0" >> ~/.bash_profile
+
 # Make sure we are in the spark-ec2 directory
 pushd /root/spark-ec2 > /dev/null
 
